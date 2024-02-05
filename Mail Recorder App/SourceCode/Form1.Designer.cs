@@ -38,7 +38,13 @@
             this.enquiriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordMailEnquiryFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recordMailsMonthlyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.manageTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recordTasksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.enquiriesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.recordTaskEnquiryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +52,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
-            this.operatorToolStripMenuItem});
+            this.manageTaskToolStripMenuItem,
+            this.operatorToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(753, 24);
@@ -115,12 +123,56 @@
             this.recordMailsMonthlyToolStripMenuItem1.Tag = "RecordMailMonthlyEnquiryForm";
             this.recordMailsMonthlyToolStripMenuItem1.Text = "Record Mails Monthly Enquiry";
             // 
+            // manageTaskToolStripMenuItem
+            // 
+            this.manageTaskToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.recordTasksToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.enquiriesToolStripMenuItem1});
+            this.manageTaskToolStripMenuItem.Name = "manageTaskToolStripMenuItem";
+            this.manageTaskToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.manageTaskToolStripMenuItem.Text = "Manage Task";
+            // 
+            // recordTasksToolStripMenuItem
+            // 
+            this.recordTasksToolStripMenuItem.Name = "recordTasksToolStripMenuItem";
+            this.recordTasksToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.recordTasksToolStripMenuItem.Tag = "RecordTaskForm";
+            this.recordTasksToolStripMenuItem.Text = "Record Tasks";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
+            // 
+            // enquiriesToolStripMenuItem1
+            // 
+            this.enquiriesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.recordTaskEnquiryToolStripMenuItem});
+            this.enquiriesToolStripMenuItem1.Name = "enquiriesToolStripMenuItem1";
+            this.enquiriesToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.enquiriesToolStripMenuItem1.Text = "Enquiries";
+            // 
+            // recordTaskEnquiryToolStripMenuItem
+            // 
+            this.recordTaskEnquiryToolStripMenuItem.Name = "recordTaskEnquiryToolStripMenuItem";
+            this.recordTaskEnquiryToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.recordTaskEnquiryToolStripMenuItem.Tag = "RecordTaskEnquiryForm";
+            this.recordTaskEnquiryToolStripMenuItem.Text = "Record Task Enquiry";
+            // 
             // operatorToolStripMenuItem
             // 
             this.operatorToolStripMenuItem.Name = "operatorToolStripMenuItem";
             this.operatorToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operatorToolStripMenuItem.Tag = "ManageOperatorForm";
             this.operatorToolStripMenuItem.Text = "Operator";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.settingsToolStripMenuItem.Tag = "SettingForm";
+            this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // Form1
             // 
@@ -157,6 +209,12 @@
         private System.Windows.Forms.ToolStripMenuItem enquiriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordMailEnquiryFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordMailsMonthlyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manageTaskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recordTasksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem enquiriesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem recordTaskEnquiryToolStripMenuItem;
     }
 }
 

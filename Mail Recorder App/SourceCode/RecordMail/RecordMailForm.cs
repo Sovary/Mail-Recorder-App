@@ -14,6 +14,7 @@ namespace Mail_Recorder_App
 {
     public partial class RecordMailForm : Form, ILookup
     {
+        Setting setting;
         
         Operator DMC;
         RecordMail curr;
@@ -36,6 +37,7 @@ namespace Mail_Recorder_App
               //  comboBoxSender.Items.Add(list[i]);
             }
             comboBoxSender.DisplayMember = "Name";
+            setting = facade.GetSetting();
             Clear();
         }
 
@@ -51,7 +53,7 @@ namespace Mail_Recorder_App
             catch (ValidatingException ex)
             {
                 Msg.ShowException(ex);
-            }
+            }   
         }
 
         private void Button_Edit_Click(object sender, EventArgs e)
@@ -71,8 +73,7 @@ namespace Mail_Recorder_App
 
         private void ButtonLookup_Click(object sender, EventArgs e)
         {
-            Form1.OpenForm<OperatorLookupForm>(this).ShowDialog();
-            
+            Form1.OpenForm<OperatorLookupForm>(this);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -114,6 +115,11 @@ namespace Mail_Recorder_App
             dateTimePickerMonth.Value = m.Monthly;
             transactionControl1.Button_Prev.Enabled = Prev != null;
             transactionControl1.Button_Next.Enabled = true;
+            checkBoxCQ.Checked = m.IsCQ;
+            textBoxNew.Text = m.NewPoints;
+            textBoxPending.Text = m.PendingPoints;
+            textBoxAnalyze.Text = m.AnalyzePoints;
+            textBoxClose.Text = m.ClosePoints;
             buttonAdd.Text = "Update";
             if (dicOper.ContainsKey(m.OperatorSendId))
             {
@@ -136,11 +142,16 @@ namespace Mail_Recorder_App
             comboBoxSender.SelectedIndex = -1;
             textBoxDetail.Text = string.Empty;
             textBoxMemo.Text = string.Empty;
-            dateTimePickerMonth.Value = DateTime.Today;
+            dateTimePickerMonth.Value = setting is null? DateTime.Today: setting.RecMailMonthly;
             dateTimePickerDmcDate.Value = DateTime.Today;
+            checkBoxCQ.Checked = false;
             buttonAdd.Text = "Add";
             grid.Rows.Clear();
             FileInMemory.Clear();
+            textBoxNew.Text = string.Empty;
+            textBoxPending.Text = string.Empty;
+            textBoxAnalyze.Text = string.Empty;
+            textBoxClose.Text = string.Empty;
             Enable(true);
         }
 
@@ -161,7 +172,12 @@ namespace Mail_Recorder_App
                 Detail = textBoxDetail.Text,
                 Memo = textBoxMemo.Text,
                 OperatorId = Operator.Id,
+                IsCQ = checkBoxCQ.Checked,
                 OperatorSendId = ((Operator)(comboBoxSender.SelectedItem)).Id,
+                NewPoints = textBoxNew.Text+string.Empty,
+                PendingPoints = textBoxPending.Text+string.Empty,
+                AnalyzePoints = textBoxAnalyze.Text+string.Empty,
+                ClosePoints = textBoxClose.Text+string.Empty,
             };
         }
         
@@ -208,16 +224,6 @@ namespace Mail_Recorder_App
 
         }
 
-        private void buttonPrev_Click(object sender, EventArgs e)
-        {
-            PopulateForm(Prev);
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            PopulateForm(Next);
-        }
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
             Clear();
@@ -233,6 +239,11 @@ namespace Mail_Recorder_App
             dateTimePickerMonth.Enabled = enable;
             buttonAdd.Enabled = enable;
             buttonAttachment.Enabled = enable;
+            checkBoxCQ.Enabled = enable;
+            textBoxNew.ReadOnly = !enable;
+            textBoxPending.ReadOnly = !enable;
+            textBoxAnalyze.ReadOnly = !enable;
+            textBoxClose.ReadOnly = !enable;
         }
 
 
@@ -317,6 +328,11 @@ namespace Mail_Recorder_App
                 FileInMemory.Clear();
                 FileInMemory.AddRange(attachForm.HelperAttachments);
             }
+        }
+
+        private void checkBoxCQ_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

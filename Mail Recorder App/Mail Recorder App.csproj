@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mail_Recorder_App</RootNamespace>
     <AssemblyName>Mail_Recorder_App</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -81,7 +81,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SourceCode\DAO\Enquiry\RecordTaskEnquiryParam.cs" />
     <Compile Include="SourceCode\DAO\Enquiry\RecordMailMonthlyEnquiryParam.cs" />
+    <Compile Include="SourceCode\DAO\Enquiry\RecordTrackCQEnquiryParam.cs" />
     <Compile Include="SourceCode\DAO\Facade\DataAccess.cs" />
     <Compile Include="SourceCode\DAO\Enquiry\RecordMailEnquiryParam.cs" />
     <Compile Include="SourceCode\DAO\ExcelManager.cs" />
@@ -90,11 +92,16 @@
     <Compile Include="SourceCode\DAO\Facade\RecordMailFacade.cs" />
     <Compile Include="SourceCode\DAO\Facade\RecordMailFacade_Partial.cs" />
     <Compile Include="SourceCode\DAO\Extensions.cs" />
+    <Compile Include="SourceCode\DAO\Facade\RecordTaskFacade.cs" />
+    <Compile Include="SourceCode\DAO\Facade\RecordTrackCQFacade.cs" />
     <Compile Include="SourceCode\DAO\ILookup.cs" />
     <Compile Include="SourceCode\DAO\Models\AttachmentHelp.cs" />
     <Compile Include="SourceCode\DAO\Models\MonthlyPeriod.cs" />
     <Compile Include="SourceCode\DAO\Models\RecordMailAttachment.cs" />
     <Compile Include="SourceCode\DAO\Models\RecordMailMonthly.cs" />
+    <Compile Include="SourceCode\DAO\Models\RecordTask.cs" />
+    <Compile Include="SourceCode\DAO\Models\RecordTrackCQ.cs" />
+    <Compile Include="SourceCode\DAO\Models\Setting.cs" />
     <Compile Include="SourceCode\DAO\Msg.cs" />
     <Compile Include="SourceCode\DAO\Models\Operator.cs" />
     <Compile Include="SourceCode\DAO\Models\RecordMail.cs" />
@@ -113,11 +120,35 @@
     <Compile Include="SourceCode\Enquiry\RecordMailMonthlyEnquiry\RecordMailMonthlyEnquiryForm.Designer.cs">
       <DependentUpon>RecordMailMonthlyEnquiryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordMailMonthlyEnquiry\RecordMailCQSummaryQuickReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SourceCode\Enquiry\RecordMailMonthlyEnquiry\RecordMailMonthlyQuickReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordMailMonthlyEnquiry\RecordMailCQSummaryQuickReportImp.cs" />
     <Compile Include="SourceCode\Enquiry\RecordMailMonthlyEnquiry\RecordMailMonthlyQuickReportImp.cs" />
     <Compile Include="SourceCode\Enquiry\RecordMailEnquiry\RecordMailQuickReportImp.cs" />
+    <Compile Include="SourceCode\Enquiry\RecordTaskEnquiry\RecordTaskEnquiryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordTaskEnquiry\RecordTaskEnquiryForm.Designer.cs">
+      <DependentUpon>RecordTaskEnquiryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordTaskEnquiry\RecordTaskEnquiryQuickReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordTaskEnquiry\RecordTaskEnquiryQuickReportImp.cs" />
+    <Compile Include="SourceCode\Enquiry\RecordTrackCQEnquiry\RecordTrackCQQuickReportImp.cs" />
+    <Compile Include="SourceCode\Enquiry\RecordTrackCQEnquiry\RecordTrackCQQuickReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordTrackCQEnquiry\RecordTrackCQEnquiryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\Enquiry\RecordTrackCQEnquiry\RecordTrackCQEnquiryForm.Designer.cs">
+      <DependentUpon>RecordTrackCQEnquiryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SourceCode\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,17 +211,35 @@
     <Compile Include="SourceCode\Enquiry\RecordMailEnquiry\RecordMailQuickReportForm.Designer.cs">
       <DependentUpon>RecordMailQuickReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SourceCode\RecordTrackTQCQ\RecordTrackTQCQ.cs">
+    <Compile Include="SourceCode\RecordTask\RecordTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SourceCode\RecordTrackTQCQ\RecordTrackTQCQ.Designer.cs">
-      <DependentUpon>RecordTrackTQCQ.cs</DependentUpon>
+    <Compile Include="SourceCode\RecordTask\RecordTaskForm.Designer.cs">
+      <DependentUpon>RecordTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SourceCode\RecordTrackTQCQ\RecordTrackTQCQForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\RecordTrackTQCQ\RecordTrackTQCQForm.Designer.cs">
+      <DependentUpon>RecordTrackTQCQForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SourceCode\Setting\SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\Setting\SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="SourceCode\Enquiry\QuickReportForm.resx">
       <DependentUpon>QuickReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SourceCode\Enquiry\RecordMailMonthlyEnquiry\RecordMailMonthlyEnquiryForm.resx">
       <DependentUpon>RecordMailMonthlyEnquiryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceCode\Enquiry\RecordTaskEnquiry\RecordTaskEnquiryForm.resx">
+      <DependentUpon>RecordTaskEnquiryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceCode\Enquiry\RecordTrackCQEnquiry\RecordTrackCQEnquiryForm.resx">
+      <DependentUpon>RecordTrackCQEnquiryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SourceCode\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -232,8 +281,14 @@
     <EmbeddedResource Include="SourceCode\Enquiry\RecordMailEnquiry\RecordMailQuickReportForm.resx">
       <DependentUpon>RecordMailQuickReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SourceCode\RecordTrackTQCQ\RecordTrackTQCQ.resx">
-      <DependentUpon>RecordTrackTQCQ.cs</DependentUpon>
+    <EmbeddedResource Include="SourceCode\RecordTask\RecordTaskForm.resx">
+      <DependentUpon>RecordTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceCode\RecordTrackTQCQ\RecordTrackTQCQForm.resx">
+      <DependentUpon>RecordTrackTQCQForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceCode\Setting\SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

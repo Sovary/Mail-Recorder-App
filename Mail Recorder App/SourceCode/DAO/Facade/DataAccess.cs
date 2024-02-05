@@ -116,7 +116,8 @@ namespace Mail_Recorder_App.DAO
             if (o == null) throw new ValidatingException("Invalid object");
             if (string.IsNullOrWhiteSpace(o.Name)) throw new ValidatingException("Invalid Name");
             if (string.IsNullOrWhiteSpace(o.Type)) throw new ValidatingException("Invalid Type");
-            if (GetOperators().Any(p => p.Name == o.Name)) throw new ValidatingException("Duplicated name!");
+            //if (GetOperators().Any(p => p.Name == o.Name)) throw new ValidatingException("Duplicated name!");
+            if(GetOperators().Where(p=>p.Id != o.Id).Any(p=>p.Name == o.Name)) throw new ValidatingException("Duplicated name!");
         }
 
         public bool RemoveOperator_Validating(int id)

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Mail_Recorder_App.DAO
 {
-    public partial class RecordMailFacade : RecordMailAttachmentFacade
+    public partial class RecordMailFacade : RecordTaskFacade
     {
 
         public RecordMail GetRecordMail(int id)
@@ -183,6 +183,24 @@ namespace Mail_Recorder_App.DAO
                 list.AddRange(col.Find(p=>p.Monthly.HasValue && (p.Monthly.Value.Month == month.Month && p.Monthly.Value.Year == month.Year)));
             }
             return list;
+        }
+
+        public void AddSetting(Setting setting)
+        {
+            using (var con = Connection)
+            {
+                var col = con.GetCollection<Setting>(typeof(Setting).Name);
+                col.Upsert(setting);
+            }
+        }
+
+        public Setting GetSetting()
+        {
+            using (var con = Connection)
+            {
+                var col = con.GetCollection<Setting>(typeof(Setting).Name);
+                return col.FindAll().LastOrDefault();
+            }
         }
     }
 }

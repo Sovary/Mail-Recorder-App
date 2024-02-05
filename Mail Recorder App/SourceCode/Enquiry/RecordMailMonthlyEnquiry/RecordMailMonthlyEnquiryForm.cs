@@ -12,12 +12,20 @@ namespace Mail_Recorder_App
             InitializeComponent();
             comboBoxType.Items.Add("");
             comboBoxType.Items.AddRange(facade.GetOperatorTypes());
+            comboBoxReportType.SelectedIndex = 0;
         }
         private void buttonRun_Click(object sender, EventArgs e)
         {
             try
             {
-                Form1.OpenQuickReport<RecordMailQuickReportForm>(new RecordMailMonthlyQuickReportImp(Param));
+                if (comboBoxReportType.SelectedIndex == 1)
+                {
+                    Form1.OpenQuickReport<RecordMailCQSummaryQuickReportForm>(new RecordMailCQSummaryQuickReportImp(Param));
+                }
+                else
+                {
+                    Form1.OpenQuickReport<RecordMailQuickReportForm>(new RecordMailMonthlyQuickReportImp(Param));
+                }
             }
             catch(ValidatingException ex)
             {

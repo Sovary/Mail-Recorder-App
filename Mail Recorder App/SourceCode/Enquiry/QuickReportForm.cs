@@ -41,6 +41,7 @@ namespace Mail_Recorder_App
                     Name = col.Name,
                     HeaderText = col.Title,
                     ValueType = col.Type,
+                    Width = col.Width,
                     SortMode = DataGridViewColumnSortMode.Automatic,
                 };
                 if(col.Type == typeof(bool))
@@ -74,6 +75,8 @@ namespace Mail_Recorder_App
             if(MessageBox.Show("Do you want to open the file?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information)!= DialogResult.Yes)return;
             System.Diagnostics.Process.Start(fileDialog.FileName);
         }
+
+        public DataGridView Grid { get => grid; }
     }
 
     
