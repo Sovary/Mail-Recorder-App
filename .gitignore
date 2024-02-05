@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Mail Recorder App/SourceCode/LoginUserForm.cs
