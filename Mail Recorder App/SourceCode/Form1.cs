@@ -34,6 +34,11 @@ namespace Mail_Recorder_App
                 {
                     DateAlert = facade.GetSetting().DayAlert
                 }));
+
+                if (DateTime.Today.Day < 3)
+                {
+                    OpenForm<FileTransferCheckingForm>();
+                }
             }
         }
 

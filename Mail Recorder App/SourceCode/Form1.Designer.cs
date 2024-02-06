@@ -44,6 +44,8 @@
             this.enquiriesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.recordTaskEnquiryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkFolderTransferToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +56,7 @@
             this.toolStripMenuItem2,
             this.manageTaskToolStripMenuItem,
             this.operatorToolStripMenuItem,
+            this.toolsToolStripMenuItem,
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -136,21 +139,21 @@
             // recordTasksToolStripMenuItem
             // 
             this.recordTasksToolStripMenuItem.Name = "recordTasksToolStripMenuItem";
-            this.recordTasksToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.recordTasksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.recordTasksToolStripMenuItem.Tag = "RecordTaskForm";
             this.recordTasksToolStripMenuItem.Text = "Record Tasks";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // enquiriesToolStripMenuItem1
             // 
             this.enquiriesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.recordTaskEnquiryToolStripMenuItem});
             this.enquiriesToolStripMenuItem1.Name = "enquiriesToolStripMenuItem1";
-            this.enquiriesToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.enquiriesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.enquiriesToolStripMenuItem1.Text = "Enquiries";
             // 
             // recordTaskEnquiryToolStripMenuItem
@@ -166,6 +169,21 @@
             this.operatorToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operatorToolStripMenuItem.Tag = "ManageOperatorForm";
             this.operatorToolStripMenuItem.Text = "Operator";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkFolderTransferToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // checkFolderTransferToolStripMenuItem
+            // 
+            this.checkFolderTransferToolStripMenuItem.Name = "checkFolderTransferToolStripMenuItem";
+            this.checkFolderTransferToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.checkFolderTransferToolStripMenuItem.Tag = "FileTransferCheckingForm";
+            this.checkFolderTransferToolStripMenuItem.Text = "Files Transfer Checking";
             // 
             // settingsToolStripMenuItem
             // 
@@ -215,6 +233,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem enquiriesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem recordTaskEnquiryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkFolderTransferToolStripMenuItem;
     }
 }
 

@@ -229,6 +229,12 @@
     <Compile Include="SourceCode\Setting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SourceCode\Tools\FileTransferCheckingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SourceCode\Tools\FileTransferCheckingForm.Designer.cs">
+      <DependentUpon>FileTransferCheckingForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="SourceCode\Enquiry\QuickReportForm.resx">
       <DependentUpon>QuickReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SourceCode\Setting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SourceCode\Tools\FileTransferCheckingForm.resx">
+      <DependentUpon>FileTransferCheckingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
