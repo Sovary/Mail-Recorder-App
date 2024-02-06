@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
@@ -44,13 +49,17 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.grid = new System.Windows.Forms.DataGridView();
+            this.ColumnLicense = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAdd.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.buttonAdd.Location = new System.Drawing.Point(200, 310);
+            this.buttonAdd.Location = new System.Drawing.Point(220, 460);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(105, 28);
             this.buttonAdd.TabIndex = 0;
@@ -62,7 +71,7 @@
             // 
             this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRemove.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.buttonRemove.Location = new System.Drawing.Point(311, 310);
+            this.buttonRemove.Location = new System.Drawing.Point(331, 460);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(72, 28);
             this.buttonRemove.TabIndex = 6;
@@ -74,7 +83,7 @@
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClear.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.buttonClear.Location = new System.Drawing.Point(391, 310);
+            this.buttonClear.Location = new System.Drawing.Point(411, 460);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(58, 28);
             this.buttonClear.TabIndex = 7;
@@ -88,7 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gradientControl1.Location = new System.Drawing.Point(-1, -2);
             this.gradientControl1.Name = "gradientControl1";
-            this.gradientControl1.Size = new System.Drawing.Size(458, 51);
+            this.gradientControl1.Size = new System.Drawing.Size(478, 51);
             this.gradientControl1.TabIndex = 22;
             this.gradientControl1.Title = "Manage Operator";
             // 
@@ -134,9 +143,9 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label5.Location = new System.Drawing.Point(-4, 303);
+            this.label5.Location = new System.Drawing.Point(-4, 453);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(522, 2);
+            this.label5.Size = new System.Drawing.Size(542, 2);
             this.label5.TabIndex = 28;
             // 
             // dateTimePickerDmcConnected
@@ -192,7 +201,7 @@
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDescription.Size = new System.Drawing.Size(201, 100);
+            this.textBoxDescription.Size = new System.Drawing.Size(311, 100);
             this.textBoxDescription.TabIndex = 59;
             // 
             // label6
@@ -215,14 +224,69 @@
             "Deactive"});
             this.comboBoxStatus.Location = new System.Drawing.Point(352, 67);
             this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(66, 24);
+            this.comboBoxStatus.Size = new System.Drawing.Size(104, 24);
             this.comboBoxStatus.TabIndex = 61;
+            // 
+            // grid
+            // 
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.grid.BackgroundColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnLicense,
+            this.ColumnDate});
+            this.grid.Location = new System.Drawing.Point(145, 294);
+            this.grid.Name = "grid";
+            this.grid.ReadOnly = true;
+            this.grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid.Size = new System.Drawing.Size(311, 143);
+            this.grid.TabIndex = 62;
+            // 
+            // ColumnLicense
+            // 
+            this.ColumnLicense.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ColumnLicense.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnLicense.DividerWidth = 2;
+            this.ColumnLicense.HeaderText = "License";
+            this.ColumnLicense.Name = "ColumnLicense";
+            this.ColumnLicense.ReadOnly = true;
+            // 
+            // ColumnDate
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnDate.HeaderText = "Date Range";
+            this.ColumnDate.Name = "ColumnDate";
+            this.ColumnDate.ReadOnly = true;
+            this.ColumnDate.Width = 150;
             // 
             // ManageOperatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 348);
+            this.ClientSize = new System.Drawing.Size(473, 498);
+            this.Controls.Add(this.grid);
             this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label6);
@@ -243,6 +307,7 @@
             this.MaximizeBox = false;
             this.Name = "ManageOperatorForm";
             this.Text = "Manage Operator";
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +331,8 @@
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxStatus;
+        private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLicense;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDate;
     }
 }

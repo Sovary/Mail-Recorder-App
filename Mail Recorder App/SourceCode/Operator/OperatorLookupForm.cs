@@ -29,9 +29,17 @@ namespace Mail_Recorder_App
             op.Sort((x,y)=>string.CompareOrdinal(x.Name,y.Name));
             foreach(var o in op)
             {
+                if(ilookup.GetType() != typeof(ManageOperatorForm))
+                {
+                    if (o.Status == "Deactive") continue;
+                }
+
                 var index = grid.Rows.Add();
-                grid.Rows[index].Cells["ColumnName"].Value = o.Name;
-                grid.Rows[index].Cells["ColumnType"].Value = o.Type;
+                var row = grid.Rows[index];
+                row.Cells[ColumnName.Name].Value = o.Name;
+                row.Cells[ColumnType.Name].Value = o.Type;
+                row.Cells[ColumnStatus.Name].Value = o.Status;
+
                 grid.Rows[index].Tag = o;
             }
             grid.Rows[indexRemeber].Selected = true;
