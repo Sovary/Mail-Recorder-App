@@ -143,7 +143,7 @@ namespace Mail_Recorder_App
             textBoxDetail.Text = string.Empty;
             textBoxMemo.Text = string.Empty;
             dateTimePickerMonth.Value = setting is null? DateTime.Today: setting.RecMailMonthly;
-            dateTimePickerDmcDate.Value = DateTime.Today;
+            dateTimePickerDmcDate.Value = DateTime.Now;
             checkBoxCQ.Checked = false;
             buttonAdd.Text = "Add";
             grid.Rows.Clear();
