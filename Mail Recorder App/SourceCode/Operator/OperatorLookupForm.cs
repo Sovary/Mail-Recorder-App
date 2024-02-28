@@ -106,5 +106,18 @@ namespace Mail_Recorder_App
             var f = Form1.OpenForm<ManageOperatorForm>();
             f.Lookup(facade.GetOperator(op.Id));
         }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new SaveFileDialog();
+            fileDialog.Filter = ".xlsx Files (*.xlsx)|*.xlsx";
+            DateTime today = DateTime.Today;
+            fileDialog.FileName = string.Format($"{today.Year}_{today.Month}_{today.Day}_Operators");
+            if (fileDialog.ShowDialog() != DialogResult.OK) return;
+            var excelMgr = new ExcelManager();
+            excelMgr.ExportExcel(fileDialog.FileName, grid.ToDataTable());
+            if (MessageBox.Show("Do you want to open the file?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes) return;
+            System.Diagnostics.Process.Start(fileDialog.FileName);
+        }
     }
 }
