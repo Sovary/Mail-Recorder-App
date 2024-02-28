@@ -23,6 +23,7 @@ namespace Mail_Recorder_App
         public RecordMailForm()
         {
             InitializeComponent();
+            DoubleBuffered = true;
             lookupControl1.ButtonLookup.Click += ButtonLookup_Click;
             lookupControl1.LookupTextBox.DoubleClick += ButtonLookup_Click;
             transactionControl1.Button_Prev.Click += Button_Prev_Click;
@@ -238,7 +239,6 @@ namespace Mail_Recorder_App
             dateTimePickerDmcDate.Enabled = enable;
             dateTimePickerMonth.Enabled = enable;
             buttonAdd.Enabled = enable;
-            buttonAttachment.Enabled = enable;
             checkBoxCQ.Enabled = enable;
             textBoxNew.ReadOnly = !enable;
             textBoxPending.ReadOnly = !enable;
@@ -332,7 +332,30 @@ namespace Mail_Recorder_App
 
         private void checkBoxCQ_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if (!checkBoxCQ.Checked) return;
+            if(Next != null && Operator !=null)
+            {
+                var record = facade.GetRecordMailCQ(Operator.Id);
+                textBoxPending.Text = record?.PendingPoints;
+            }
+        }
+
+        private void buttonCopyScript_Click(object sender, EventArgs e)
+        {
+            if (Operator == null) return;
+            if (curr == null) return;
+            string subject = $"DMC - {Operator.Name} - Clarification Questions";
+            Operator sent = (Operator)(comboBoxSender.SelectedItem);
+            string sentby = sent.Name != "DMC"? "Operator" : "DMC";
+            var last =facade.GetRecordMails()
+                .Where(p => p.IsCQ 
+                && p.OperatorId == curr.OperatorId 
+                && dicOper[p.OperatorSendId].Name == "DMC")
+                .LastOrDefault();
+            if (last == null) return;
+            string script = $"document.querySelector(\"[name='name']\").value = \"{subject}\";document.querySelector(\"[name='type']\").value =\"{sentby}\";\r\ndocument.querySelector(\"[name='date_open']\").value ='{curr.Date.ToString("yyyy/MM/dd")}';document.querySelector(\"[name='task_date']\").value ='{curr.Date.AddWorkingDay(2).ToString("yyyy/MM/dd")}';\r\ndocument.querySelector(\"[name='oper_name']\").value ='{dicOper[curr.OperatorId].Name}';document.querySelector(\"[name='file']\").value ='{last.Attach.Last().Name}';\r\ndocument.querySelector(\"[name='point_pending']\").value ='{curr.PendingPoints}';;\r\ndocument.querySelector(\"[name='point_open']\").value ='{curr.NewPoints}';;\r\ndocument.querySelector(\"[name='point_close']\").value ='{curr.ClosePoints}';";
+            Clipboard.SetText(script);
+            MessageBox.Show("Copied!");
         }
     }
 }
