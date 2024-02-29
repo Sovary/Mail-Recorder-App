@@ -17,7 +17,9 @@ namespace Mail_Recorder_App
                 Id = -1,
                 Name = ""
             });
-            comboBoxOperator.Items.AddRange(facade.GetOperators().ToArray());
+            var ops = facade.GetOperators();
+            ops.Sort((x, y) => string.CompareOrdinal(x.Name, y.Name));
+            comboBoxOperator.Items.AddRange(ops.ToArray());
             comboBoxOperator.DisplayMember = "Name";
         }
 

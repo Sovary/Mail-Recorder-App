@@ -14,6 +14,7 @@ namespace Mail_Recorder_App
     public partial class Form1 : Form
     {
         public static Form InstanceRoot;
+        Facade facade = Facade.Instance;
         public Form1()
         {
             InitializeComponent();
@@ -25,8 +26,20 @@ namespace Mail_Recorder_App
             var s = DataAccess.BasePath;
             var init1 = DataAccess.SystemConfigPath;
             var init2 = DataAccess.FilePath;
-            
-            SetupMenu(menuStrip1.Items);
+            Form f = new LoginUserForm();
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                SetupMenu(menuStrip1.Items);
+                Form1.OpenQuickReport<RecordTaskEnquiryQuickReportForm>(new RecordTaskQuickReportImp(new RecordTaskEnquiryParam()
+                {
+                    DateAlert = facade.GetSetting().DayAlert
+                }));
+
+                if (DateTime.Today.Day < 3)
+                {
+                    OpenForm<FileTransferCheckingForm>();
+                }
+            }
         }
 
         public void SetupMenu(ToolStripItemCollection items)

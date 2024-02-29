@@ -14,6 +14,7 @@ namespace Mail_Recorder_App
 {
     public partial class RecordMailForm : Form, ILookup
     {
+        Setting setting;
         
         Operator DMC;
         RecordMail curr;
@@ -22,6 +23,7 @@ namespace Mail_Recorder_App
         public RecordMailForm()
         {
             InitializeComponent();
+            DoubleBuffered = true;
             lookupControl1.ButtonLookup.Click += ButtonLookup_Click;
             lookupControl1.LookupTextBox.DoubleClick += ButtonLookup_Click;
             transactionControl1.Button_Prev.Click += Button_Prev_Click;
@@ -36,6 +38,7 @@ namespace Mail_Recorder_App
               //  comboBoxSender.Items.Add(list[i]);
             }
             comboBoxSender.DisplayMember = "Name";
+            setting = facade.GetSetting();
             Clear();
         }
 
@@ -51,7 +54,7 @@ namespace Mail_Recorder_App
             catch (ValidatingException ex)
             {
                 Msg.ShowException(ex);
-            }
+            }   
         }
 
         private void Button_Edit_Click(object sender, EventArgs e)
@@ -71,8 +74,7 @@ namespace Mail_Recorder_App
 
         private void ButtonLookup_Click(object sender, EventArgs e)
         {
-            Form1.OpenForm<OperatorLookupForm>(this).ShowDialog();
-            
+            Form1.OpenForm<OperatorLookupForm>(this);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -114,6 +116,11 @@ namespace Mail_Recorder_App
             dateTimePickerMonth.Value = m.Monthly;
             transactionControl1.Button_Prev.Enabled = Prev != null;
             transactionControl1.Button_Next.Enabled = true;
+            checkBoxCQ.Checked = m.IsCQ;
+            textBoxNew.Text = m.NewPoints;
+            textBoxPending.Text = m.PendingPoints;
+            textBoxAnalyze.Text = m.AnalyzePoints;
+            textBoxClose.Text = m.ClosePoints;
             buttonAdd.Text = "Update";
             if (dicOper.ContainsKey(m.OperatorSendId))
             {
@@ -136,11 +143,16 @@ namespace Mail_Recorder_App
             comboBoxSender.SelectedIndex = -1;
             textBoxDetail.Text = string.Empty;
             textBoxMemo.Text = string.Empty;
-            dateTimePickerMonth.Value = DateTime.Today;
-            dateTimePickerDmcDate.Value = DateTime.Today;
+            dateTimePickerMonth.Value = setting is null? DateTime.Today: setting.RecMailMonthly;
+            dateTimePickerDmcDate.Value = DateTime.Now;
+            checkBoxCQ.Checked = false;
             buttonAdd.Text = "Add";
             grid.Rows.Clear();
             FileInMemory.Clear();
+            textBoxNew.Text = string.Empty;
+            textBoxPending.Text = string.Empty;
+            textBoxAnalyze.Text = string.Empty;
+            textBoxClose.Text = string.Empty;
             Enable(true);
         }
 
@@ -161,7 +173,12 @@ namespace Mail_Recorder_App
                 Detail = textBoxDetail.Text,
                 Memo = textBoxMemo.Text,
                 OperatorId = Operator.Id,
+                IsCQ = checkBoxCQ.Checked,
                 OperatorSendId = ((Operator)(comboBoxSender.SelectedItem)).Id,
+                NewPoints = textBoxNew.Text+string.Empty,
+                PendingPoints = textBoxPending.Text+string.Empty,
+                AnalyzePoints = textBoxAnalyze.Text+string.Empty,
+                ClosePoints = textBoxClose.Text+string.Empty,
             };
         }
         
@@ -208,16 +225,6 @@ namespace Mail_Recorder_App
 
         }
 
-        private void buttonPrev_Click(object sender, EventArgs e)
-        {
-            PopulateForm(Prev);
-        }
-
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            PopulateForm(Next);
-        }
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
             Clear();
@@ -232,7 +239,11 @@ namespace Mail_Recorder_App
             dateTimePickerDmcDate.Enabled = enable;
             dateTimePickerMonth.Enabled = enable;
             buttonAdd.Enabled = enable;
-            buttonAttachment.Enabled = enable;
+            checkBoxCQ.Enabled = enable;
+            textBoxNew.ReadOnly = !enable;
+            textBoxPending.ReadOnly = !enable;
+            textBoxAnalyze.ReadOnly = !enable;
+            textBoxClose.ReadOnly = !enable;
         }
 
 
@@ -317,6 +328,34 @@ namespace Mail_Recorder_App
                 FileInMemory.Clear();
                 FileInMemory.AddRange(attachForm.HelperAttachments);
             }
+        }
+
+        private void checkBoxCQ_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBoxCQ.Checked) return;
+            if(Next != null && Operator !=null)
+            {
+                var record = facade.GetRecordMailCQ(Operator.Id);
+                textBoxPending.Text = record?.PendingPoints;
+            }
+        }
+
+        private void buttonCopyScript_Click(object sender, EventArgs e)
+        {
+            if (Operator == null) return;
+            if (curr == null) return;
+            string subject = $"DMC - {Operator.Name} - Clarification Questions";
+            Operator sent = (Operator)(comboBoxSender.SelectedItem);
+            string sentby = sent.Name != "DMC"? "Operator" : "DMC";
+            var last =facade.GetRecordMails()
+                .Where(p => p.IsCQ 
+                && p.OperatorId == curr.OperatorId 
+                && dicOper[p.OperatorSendId].Name == "DMC")
+                .LastOrDefault();
+            if (last == null) return;
+            string script = $"document.querySelector(\"[name='name']\").value = \"{subject}\";document.querySelector(\"[name='type']\").value =\"{sentby}\";\r\ndocument.querySelector(\"[name='date_open']\").value ='{curr.Date.ToString("yyyy/MM/dd")}';document.querySelector(\"[name='task_date']\").value ='{curr.Date.AddWorkingDay(2).ToString("yyyy/MM/dd")}';\r\ndocument.querySelector(\"[name='oper_name']\").value ='{dicOper[curr.OperatorId].Name}';document.querySelector(\"[name='file']\").value ='{last.Attach.Last().Name}';\r\ndocument.querySelector(\"[name='point_pending']\").value ='{curr.PendingPoints}';;\r\ndocument.querySelector(\"[name='point_open']\").value ='{curr.NewPoints}';;\r\ndocument.querySelector(\"[name='point_close']\").value ='{curr.ClosePoints}';";
+            Clipboard.SetText(script);
+            MessageBox.Show("Copied!");
         }
     }
 }

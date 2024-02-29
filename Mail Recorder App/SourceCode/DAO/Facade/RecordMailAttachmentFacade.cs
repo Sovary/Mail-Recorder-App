@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Mail_Recorder_App.DAO
 {
-    public class RecordMailAttachmentFacade : DataAccess
+    public partial class RecordMailAttachmentFacade : DataAccess
     {
         protected void UploadFileMailAttach(IEnumerable<RecordMailAttachment> files, RecordMail rm)
         {

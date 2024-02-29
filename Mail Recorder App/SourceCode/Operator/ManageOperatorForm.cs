@@ -23,7 +23,7 @@ namespace Mail_Recorder_App
 
         private void ButtonLookup_Click(object sender, EventArgs e)
         {
-            Form1.OpenForm<OperatorLookupForm>(this).ShowDialog();
+           Form1.OpenForm<OperatorLookupForm>(this);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -56,6 +56,10 @@ namespace Mail_Recorder_App
             {
                 Name = lookupControl1.LookupTextBox.Text,
                 Type = comboBoxType.SelectedItem as string,
+                ConnectedDate = dateTimePickerDmcConnected.Value,
+                TransferedDate = dateTimePickerDmcTransfer.Value,
+                Description = textBoxDescription.Text,
+                Status = comboBoxStatus.SelectedItem as string,
             };
             return o;
         }
@@ -81,20 +85,28 @@ namespace Mail_Recorder_App
                 if(value == null)
                 {
                     lookupControl1.LookupTextBox.Text = string.Empty;
+                    dateTimePickerDmcConnected.Value= null;
+                    dateTimePickerDmcTransfer.Value = null;
+                    comboBoxStatus.SelectedIndex = 0;
+                    textBoxDescription.Text = string.Empty;
                 }
                 else
                 {
                     lookupControl1.LookupTextBox.Text = value.Name;
                     comboBoxType.SelectedItem = value.Type;
+                    dateTimePickerDmcConnected.Value = value.ConnectedDate;
+                    dateTimePickerDmcTransfer.Value = value.TransferedDate;
+                    textBoxDescription.Text = value.Description;
+                    comboBoxStatus.SelectedItem = value.Status;
                     buttonAdd.Text = "Update";
                 }
             }
         }
         public void Lookup(object o)
         {
-            if (o is Operator)
+            if (o is Operator op)
             {
-                CurrentOp = (Operator)o;
+                CurrentOp = op;
             }
         }
 

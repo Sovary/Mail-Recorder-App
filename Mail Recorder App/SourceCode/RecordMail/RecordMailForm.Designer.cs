@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.grid = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,14 +54,27 @@
             this.textBoxMemo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dateTimePickerMonth = new DMC.Operator.Factory.DateTimePickerDmc();
+            this.checkBoxCQ = new System.Windows.Forms.CheckBox();
+            this.textBoxClose = new System.Windows.Forms.TextBox();
+            this.textBoxPending = new System.Windows.Forms.TextBox();
+            this.textBoxNew = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxAnalyze = new System.Windows.Forms.TextBox();
+            this.buttonCopyScript = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAdd.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.buttonAdd.Location = new System.Drawing.Point(329, 487);
+            this.buttonAdd.Location = new System.Drawing.Point(391, 576);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(108, 29);
             this.buttonAdd.TabIndex = 0;
@@ -73,42 +86,42 @@
             // 
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.grid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.BackgroundColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnDate,
             this.ColumnDetail});
-            this.grid.Location = new System.Drawing.Point(91, 321);
+            this.grid.Location = new System.Drawing.Point(92, 381);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tahoma", 10F);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tahoma", 10F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(455, 143);
+            this.grid.Size = new System.Drawing.Size(511, 143);
             this.grid.TabIndex = 1;
             this.grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grid_CellDoubleClick);
             // 
             // ColumnDate
             // 
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ColumnDate.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnDate.HeaderText = "Date";
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
@@ -116,8 +129,8 @@
             // ColumnDetail
             // 
             this.ColumnDetail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.ColumnDetail.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ColumnDetail.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnDetail.DividerWidth = 2;
             this.ColumnDetail.HeaderText = "Detail";
             this.ColumnDetail.Name = "ColumnDetail";
@@ -126,22 +139,23 @@
             // textBoxDetail
             // 
             this.textBoxDetail.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.textBoxDetail.Location = new System.Drawing.Point(91, 183);
+            this.textBoxDetail.Location = new System.Drawing.Point(92, 213);
             this.textBoxDetail.Multiline = true;
             this.textBoxDetail.Name = "textBoxDetail";
             this.textBoxDetail.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDetail.Size = new System.Drawing.Size(455, 99);
+            this.textBoxDetail.Size = new System.Drawing.Size(201, 129);
             this.textBoxDetail.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label1.Location = new System.Drawing.Point(43, 183);
+            this.label1.Location = new System.Drawing.Point(45, 214);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Detail:";
+            
             // 
             // comboBoxSender
             // 
@@ -167,7 +181,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label3.Location = new System.Drawing.Point(302, 94);
+            this.label3.Location = new System.Drawing.Point(49, 187);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 7;
@@ -187,7 +201,7 @@
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClear.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.buttonClear.Location = new System.Drawing.Point(443, 487);
+            this.buttonClear.Location = new System.Drawing.Point(505, 576);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(103, 29);
             this.buttonClear.TabIndex = 14;
@@ -198,9 +212,9 @@
             // buttonAttachment
             // 
             this.buttonAttachment.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.buttonAttachment.Location = new System.Drawing.Point(345, 119);
+            this.buttonAttachment.Location = new System.Drawing.Point(500, 348);
             this.buttonAttachment.Name = "buttonAttachment";
-            this.buttonAttachment.Size = new System.Drawing.Size(103, 30);
+            this.buttonAttachment.Size = new System.Drawing.Size(103, 29);
             this.buttonAttachment.TabIndex = 20;
             this.buttonAttachment.Text = "Attachment";
             this.buttonAttachment.UseVisualStyleBackColor = true;
@@ -213,7 +227,7 @@
             this.transactionControl1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.transactionControl1.Location = new System.Drawing.Point(-1, 47);
             this.transactionControl1.Name = "transactionControl1";
-            this.transactionControl1.Size = new System.Drawing.Size(558, 31);
+            this.transactionControl1.Size = new System.Drawing.Size(620, 31);
             this.transactionControl1.TabIndex = 22;
             // 
             // gradientControl1
@@ -222,7 +236,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gradientControl1.Location = new System.Drawing.Point(-1, -1);
             this.gradientControl1.Name = "gradientControl1";
-            this.gradientControl1.Size = new System.Drawing.Size(567, 51);
+            this.gradientControl1.Size = new System.Drawing.Size(629, 51);
             this.gradientControl1.TabIndex = 21;
             this.gradientControl1.Title = "Record Mail";
             // 
@@ -238,9 +252,9 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.BackColor = System.Drawing.Color.DodgerBlue;
-            this.label5.Location = new System.Drawing.Point(-4, 482);
+            this.label5.Location = new System.Drawing.Point(-4, 571);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(570, 2);
+            this.label5.Size = new System.Drawing.Size(632, 2);
             this.label5.TabIndex = 25;
             // 
             // dateTimePickerDmcDate
@@ -248,7 +262,7 @@
             this.dateTimePickerDmcDate.CustomFormat = "dd-MMM-yyyy hh:mm tt";
             this.dateTimePickerDmcDate.Font = new System.Drawing.Font("Tahoma", 10F);
             this.dateTimePickerDmcDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDmcDate.Location = new System.Drawing.Point(345, 90);
+            this.dateTimePickerDmcDate.Location = new System.Drawing.Point(92, 183);
             this.dateTimePickerDmcDate.Name = "dateTimePickerDmcDate";
             this.dateTimePickerDmcDate.Size = new System.Drawing.Size(200, 24);
             this.dateTimePickerDmcDate.TabIndex = 26;
@@ -257,7 +271,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.label6.Location = new System.Drawing.Point(39, 292);
+            this.label6.Location = new System.Drawing.Point(42, 352);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 17);
             this.label6.TabIndex = 27;
@@ -266,10 +280,10 @@
             // textBoxMemo
             // 
             this.textBoxMemo.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.textBoxMemo.Location = new System.Drawing.Point(90, 288);
+            this.textBoxMemo.Location = new System.Drawing.Point(93, 348);
             this.textBoxMemo.Name = "textBoxMemo";
             this.textBoxMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxMemo.Size = new System.Drawing.Size(455, 24);
+            this.textBoxMemo.Size = new System.Drawing.Size(401, 24);
             this.textBoxMemo.TabIndex = 28;
             // 
             // label7
@@ -295,11 +309,142 @@
             this.dateTimePickerMonth.TabIndex = 31;
             this.dateTimePickerMonth.Value = null;
             // 
+            // checkBoxCQ
+            // 
+            this.checkBoxCQ.AutoSize = true;
+            this.checkBoxCQ.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.checkBoxCQ.Location = new System.Drawing.Point(67, 12);
+            this.checkBoxCQ.Name = "checkBoxCQ";
+            this.checkBoxCQ.Size = new System.Drawing.Size(46, 21);
+            this.checkBoxCQ.TabIndex = 32;
+            this.checkBoxCQ.Text = "CQ";
+            this.checkBoxCQ.UseVisualStyleBackColor = true;
+            this.checkBoxCQ.CheckedChanged += new System.EventHandler(this.checkBoxCQ_CheckedChanged);
+            // 
+            // textBoxClose
+            // 
+            this.textBoxClose.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.textBoxClose.Location = new System.Drawing.Point(67, 130);
+            this.textBoxClose.Name = "textBoxClose";
+            this.textBoxClose.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxClose.Size = new System.Drawing.Size(201, 24);
+            this.textBoxClose.TabIndex = 48;
+            // 
+            // textBoxPending
+            // 
+            this.textBoxPending.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.textBoxPending.Location = new System.Drawing.Point(67, 100);
+            this.textBoxPending.Name = "textBoxPending";
+            this.textBoxPending.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxPending.Size = new System.Drawing.Size(201, 24);
+            this.textBoxPending.TabIndex = 49;
+            // 
+            // textBoxNew
+            // 
+            this.textBoxNew.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.textBoxNew.Location = new System.Drawing.Point(67, 40);
+            this.textBoxNew.Name = "textBoxNew";
+            this.textBoxNew.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxNew.Size = new System.Drawing.Size(201, 24);
+            this.textBoxNew.TabIndex = 50;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label8.Location = new System.Drawing.Point(20, 134);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 17);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "Close:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label10.Location = new System.Drawing.Point(3, 104);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 17);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "Pending:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label11.Location = new System.Drawing.Point(26, 44);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 17);
+            this.label11.TabIndex = 47;
+            this.label11.Text = "New:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBoxAnalyze);
+            this.groupBox1.Controls.Add(this.buttonCopyScript);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.textBoxNew);
+            this.groupBox1.Controls.Add(this.checkBoxCQ);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.textBoxClose);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxPending);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.groupBox1.Location = new System.Drawing.Point(314, 84);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(288, 258);
+            this.groupBox1.TabIndex = 53;
+            this.groupBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.button1.Location = new System.Drawing.Point(62, -54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(103, 29);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "Attachment";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBoxAnalyze
+            // 
+            this.textBoxAnalyze.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.textBoxAnalyze.Location = new System.Drawing.Point(67, 70);
+            this.textBoxAnalyze.Name = "textBoxAnalyze";
+            this.textBoxAnalyze.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxAnalyze.Size = new System.Drawing.Size(201, 24);
+            this.textBoxAnalyze.TabIndex = 54;
+            // 
+            // buttonCopyScript
+            // 
+            this.buttonCopyScript.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCopyScript.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.buttonCopyScript.Location = new System.Drawing.Point(67, 174);
+            this.buttonCopyScript.Name = "buttonCopyScript";
+            this.buttonCopyScript.Size = new System.Drawing.Size(103, 29);
+            this.buttonCopyScript.TabIndex = 54;
+            this.buttonCopyScript.Text = "Copy Script";
+            this.buttonCopyScript.UseVisualStyleBackColor = true;
+            this.buttonCopyScript.Click += new System.EventHandler(this.buttonCopyScript_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.label12.Location = new System.Drawing.Point(6, 74);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 17);
+            this.label12.TabIndex = 53;
+            this.label12.Text = "Analyze:";
+            // 
             // RecordMailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 525);
+            this.ClientSize = new System.Drawing.Size(620, 614);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dateTimePickerMonth);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxMemo);
@@ -321,11 +466,12 @@
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(574, 564);
             this.Name = "RecordMailForm";
             this.Text = "Record Mail Form";
             this.Load += new System.EventHandler(this.RecordMailForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +500,17 @@
         private System.Windows.Forms.TextBox textBoxMemo;
         private System.Windows.Forms.Label label7;
         private DMC.Operator.Factory.DateTimePickerDmc dateTimePickerMonth;
+        private System.Windows.Forms.CheckBox checkBoxCQ;
+        private System.Windows.Forms.TextBox textBoxClose;
+        private System.Windows.Forms.TextBox textBoxPending;
+        private System.Windows.Forms.TextBox textBoxNew;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBoxAnalyze;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCopyScript;
     }
 }

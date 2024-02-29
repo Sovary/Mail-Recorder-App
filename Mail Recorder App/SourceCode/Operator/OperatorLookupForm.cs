@@ -15,6 +15,8 @@ namespace Mail_Recorder_App
     {
         Facade facade => Facade.Instance;
         ILookup ilookup;
+        static List<Operator> op = new List<Operator>();
+        static int indexRemeber = 0;
         public OperatorLookupForm(ILookup ilookup)
         {
             InitializeComponent();
@@ -23,21 +25,31 @@ namespace Mail_Recorder_App
 
         private void OperatorLookupForm_Load(object sender, EventArgs e)
         {
-            List<Operator> list = facade.GetOperators();
-            list.Sort((x,y)=>string.CompareOrdinal(x.Name,y.Name));
-            foreach(var o in list)
+            if (!op.Any()) op.AddRange(facade.GetOperators());
+            op.Sort((x,y)=>string.CompareOrdinal(x.Name,y.Name));
+            foreach(var o in op)
             {
+                if(ilookup.GetType() != typeof(ManageOperatorForm))
+                {
+                    if (o.Status == "Deactive") continue;
+                }
+
                 var index = grid.Rows.Add();
-                grid.Rows[index].Cells["ColumnName"].Value = o.Name;
-                grid.Rows[index].Cells["ColumnType"].Value = o.Type;
+                var row = grid.Rows[index];
+                row.Cells[ColumnName.Name].Value = o.Name;
+                row.Cells[ColumnType.Name].Value = o.Type;
+                row.Cells[ColumnStatus.Name].Value = o.Status;
+
                 grid.Rows[index].Tag = o;
             }
+            grid.Rows[indexRemeber].Selected = true;
         }
         void DropItem()
         {
             if (grid.SelectedRows.Count > 1) return;
             DialogResult = DialogResult.OK;
-            ilookup.Lookup(grid.SelectedRows[0].Tag);
+            var op = grid.SelectedRows[0].Tag as Operator;
+            ilookup.Lookup(facade.GetOperator(op.Id));
         }
         private void buttonSelect_Click(object sender, EventArgs e)
         {
@@ -47,6 +59,65 @@ namespace Mail_Recorder_App
         private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DropItem();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Escape | Keys.Shift))
+            {
+                op.Clear();
+                Close();
+                return true;
+            }
+            else if(keyData == Keys.Escape)
+            {
+                Close();
+                return true;
+            }
+            else if (keyData == Keys.Enter)
+            {
+                DropItem();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void grid_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            foreach(DataGridViewRow row in grid.Rows)
+            {
+                var op = row.Tag as Operator;
+                if (!op.Name.ToLower().StartsWith(Char.ToString(e.KeyChar))) continue;
+                row.Selected = true;
+                grid.FirstDisplayedScrollingRowIndex = row.Index;
+                break;
+            }
+        }
+
+        private void OperatorLookupForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            if (grid.SelectedRows.Count > 1) return;
+            DialogResult = DialogResult.OK;
+            var op = grid.SelectedRows[0].Tag as Operator;
+            var f = Form1.OpenForm<ManageOperatorForm>();
+            f.Lookup(facade.GetOperator(op.Id));
+        }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new SaveFileDialog();
+            fileDialog.Filter = ".xlsx Files (*.xlsx)|*.xlsx";
+            DateTime today = DateTime.Today;
+            fileDialog.FileName = string.Format($"{today.Year}_{today.Month}_{today.Day}_Operators");
+            if (fileDialog.ShowDialog() != DialogResult.OK) return;
+            var excelMgr = new ExcelManager();
+            excelMgr.ExportExcel(fileDialog.FileName, grid.ToDataTable());
+            if (MessageBox.Show("Do you want to open the file?", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes) return;
+            System.Diagnostics.Process.Start(fileDialog.FileName);
         }
     }
 }
